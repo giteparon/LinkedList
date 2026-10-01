@@ -29,21 +29,22 @@ public class Main{
               System.out.println("removing "+input.substring(7));
               System.out.println(list.deleteAValue(input.substring(7)).getValue());
           }
+          else if(input.startsWith("nreverse")){
+            int n = Integer.parseInt(input.substring(9));
+            list.nReverse(n);
+            System.out.println(list.showValues());
+
+
+          }
           else if(input.equals("clear"))
           {
             list.clear();
           }
           else if(input.startsWith("delete")){
-            list.deleteAValue(input.substring(7));
+            System.out.println(list.get(Integer.parseInt(input.substring(7)) - 1).getValue());
           }
+          
           //testing
-          else if(input.equals("test")){
-            System.out.println("testing...");
-            System.out.println(list.showValues());
-            list.reverse();
-            System.out.println(list.showValues());
-            System.out.println("done testing!!");
-          }
           else if(!input.equals("exit")){
               System.out.println("I don't know how to "+input);
           }

@@ -158,7 +158,7 @@ public class LinkedList{
     return _s;
   }
   //pre and post
-  public void reverse(){
+  public void reverse(ListNode first){
     System.out.println("reversing in method");
     if(this.length() == 0 || this.length() == 1){
       return;
@@ -167,24 +167,37 @@ public class LinkedList{
     ListNode _n = front;
     ListNode _first = _n;
     ListNode _n1 = _n.getParent();
-    System.out.println("" + _n.getValue() + " " + _nprev+ " " + _n1.getValue() + " " + first.getValue());
     while(_n1 != first){
-      System.out.println("" + _n.getValue() + " " + _nprev + " " + _n1.getValue() + " " + first.getValue());
       _n.setParent(_nprev);
       _nprev = _n;
       _n = _n1;
-      _n1 = _n.getParent();
+      _n1 = _n1.getParent();
 
     }
-    System.out.println("" + _n.getValue() + " " + _nprev + " " + _n1.getValue() + " " + first.getValue());
+    _n.setParent(_nprev);
     _n1.setParent(_n);
-    front = _n1;
-    first = _first;
+    this.front = _n1;
+    if(_first.getParent() == null){
+      this.first = _first;
+    }
+
+    
+    
+    
     
 
     
     return;
 
+  }
+  // pre and post
+  public void nReverse(int n){
+
+
+    ListNode rLast = this.get(n - 1);
+    System.out.println(rLast.getValue());
+    //last element of reverse
+    reverse(rLast);
   }
   //precondition: the list has been initialized
   //postconditions: clears the list.
